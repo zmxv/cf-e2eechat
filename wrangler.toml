@@ -1,0 +1,16 @@
+name = "e2eechat"
+compatibility_date = "2022-05-03"
+main = "./worker.mjs"
+
+[build.upload]
+format = "modules"
+rules = [{type = "Data", globs = ["*.html", "*.css", "*.js"]}]
+
+[durable_objects]
+bindings = [
+  { name = "channels", class_name = "Channel" }
+]
+
+[[migrations]]
+tag = "1"
+new_classes = ["Channel"]
